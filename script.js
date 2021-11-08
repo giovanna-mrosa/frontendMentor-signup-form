@@ -13,15 +13,18 @@ function ValidateField(field) {
   }
 
   function customMessage(typeError) {
+    const fieldName = document
+      .querySelector('input')
+      .getAttribute('placeholder')
     const messages = {
       text: {
-        valueMissing: '[Field Name] cannot be empty'
+        valueMissing: `${fieldName} cannot be empty`
       },
       password: {
         valueMissing: 'Password cannot be empty'
       },
       email: {
-        valueMissing: 'Email cannot be empty',
+        valueMissing: 'Email Address cannot be empty',
         typeMismatch: 'Looks like this is not an email'
       }
     }
@@ -30,8 +33,10 @@ function ValidateField(field) {
 
   function setCustomMessage(message) {
     const spanError = field.parentNode.querySelector('span.error')
+    const iconError = field.parentNode.querySelector('input')
 
     if (message) {
+      iconError.classList.add('icon-error')
       spanError.classList.add('active')
       spanError.innerHTML = message
     } else {
