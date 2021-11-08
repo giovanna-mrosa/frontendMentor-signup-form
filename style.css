@@ -100,6 +100,25 @@ body {
   padding-left: 25px;
 }
 
+.input:invalid {
+  color: var(--red);
+  outline: none;
+}
+
+span.error {
+  display: flex;
+  justify-content: right;
+  color: var(--red);
+  font-size: 10px;
+  font-style: italic;
+  margin-top: 4px;
+}
+
+span.error.active {
+  color: var(--red);
+  font-size: 10px;
+}
+
 .m-top {
   margin-top: 35px;
 }
