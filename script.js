@@ -13,9 +13,8 @@ function ValidateField(field) {
   }
 
   function customMessage(typeError) {
-    const fieldName = document
-      .querySelector('input')
-      .getAttribute('placeholder')
+    const fieldName = field.placeholder
+
     const messages = {
       text: {
         valueMissing: `${fieldName} cannot be empty`
@@ -41,6 +40,8 @@ function ValidateField(field) {
       spanError.innerHTML = message
     } else {
       spanError.classList.remove('active')
+      iconError.classList.remove('icon-error')
+
       spanError.innerHTML = ''
     }
   }
@@ -54,6 +55,7 @@ function ValidateField(field) {
       field.style.borderColor = 'var(--red)'
       setCustomMessage(message)
     } else {
+      field.style.borderColor = ''
       setCustomMessage()
     }
   }
@@ -72,6 +74,7 @@ for (field of fields) {
 
     customValidation(event)
   })
+
   field.addEventListener('blur', customValidation)
 }
 
